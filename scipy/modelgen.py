@@ -34,10 +34,14 @@ def parameterMatrix(length, changePointPos, w1, w2, sampleFreq = 8000):
     return G
 
 
-def parameterMatrixNew(length, changePointPos, w1, w2, sampleFreq = 8000):
+def fastParameterMatrix(length, changePointPos, w1, w2, sampleFreq = 8000):
     
-    """ Generate the parameter matrix G in the General Linear Model: 
-  
+    """Same as paramaterMatrix() but runs > 10 times faster
+    note: code less obvious. see:
+    http://docs.scipy.org/doc/numpy/reference/routines.indexing.html
+    
+    Generate the parameter matrix G in the General Linear Model: 
+
     d = Gb + e
 
     Parameters
@@ -63,5 +67,3 @@ def parameterMatrixNew(length, changePointPos, w1, w2, sampleFreq = 8000):
                      np.cos(freqnorm2*index[changePointPos+1:])] ]
 
     return G
-       
-   
